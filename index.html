@@ -1,17 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Pages Update Demo</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Md Saddam Hossan — Front-End & WordPress Developer</title>
+  <meta name="description" content="Portfolio — Md Saddam Hossan. Front-End & WordPress Developer." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>🚀 Welcome to My Updated Website!</h1>
-  <p>This page was updated using <strong>git push</strong>.</p>
+  <header class="nav-wrap" role="banner">
+    <nav class="nav container" aria-label="Primary Navigation">
+      <a class="brand" href="#hero" id="brandLink">
+        <img class="avatar" alt="Md Saddam avatar" src="" id="brandAvatar" loading="lazy" />
+        <div class="brand-meta">
+          <span class="brand-name" id="brandName">Md Saddam Hossan</span>
+          <span class="brand-role" id="brandRole">Front-End & WordPress Developer</span>
+        </div>
+      </a>
 
-  <button id="colorBtn">Click to Change Background</button>
-  <p id="statusText"></p>
+      <ul class="nav-links" role="menubar" id="navLinks">
+        <li role="none"><a role="menuitem" href="#about">About</a></li>
+        <li role="none"><a role="menuitem" href="#skills">Skills</a></li>
+        <li role="none"><a role="menuitem" href="#projects">Projects</a></li>
+        <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- This button triggers the client-side PDF generator -->
+        <button class="btn btn-ghost" id="downloadCvBtn" title="Download CV (PDF)">Download CV (PDF)</button>
+
+        <button id="themeToggle" class="btn btn-icon" title="Toggle theme" aria-pressed="false">🌓</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <p class="eyebrow">Hello — I’m</p>
+          <h1 class="title"><span id="profileName">Md Saddam Hossan</span><span class="accent">.</span></h1>
+          <h2 class="subtitle">I build <span id="type" aria-live="polite"></span></h2>
+          <p class="lead" id="profileBio">Front-end developer and WordPress engineer focused on performant interfaces, thoughtful UX, and maintainable code.</p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">See projects</a>
+            <a class="btn btn-outline" href="#contact">Hire me</a>
+          </div>
+
+          <ul class="hero-meta">
+            <li><strong>Location:</strong> <span id="profileLocation">Thakurgaon, Bangladesh</span></li>
+            <li><strong>Email:</strong> <a id="profileEmail" href="mailto:saddamhossan.tkg@gmail.com">saddamhossan.tkg@gmail.com</a></li>
+          </ul>
+        </div>
+
+        <aside class="hero-card" aria-hidden="false">
+          <div class="card-top">
+            <div class="avatar-lg">
+              <img alt="Saddam portrait" src="" id="heroAvatar" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="card-name" id="cardName">Md Saddam Hossan</h3>
+              <p class="card-role" id="cardRole">Front-End & WordPress Developer</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <h4>Featured</h4>
+            <ul class="feature-list" id="featuredList">
+              <!-- populated from script -->
+            </ul>
+
+            <div class="tech-tags" aria-hidden="true" id="techTags">
+              <!-- populated from script -->
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="section container reveal">
+      <div class="grid-2">
+        <div>
+          <h2>About</h2>
+          <p id="aboutText">I design and build modern, accessible websites and WordPress solutions. I focus on performance, UX, and writing maintainable code that teams can iterate on easily.</p>
+          <p>I’m available for freelance projects and full-time roles. I enjoy creating developer tooling and small open-source plugins that help speed up projects.</p>
+        </div>
+
+        <div class="card mini-card">
+          <h3>Quick facts</h3>
+          <ul>
+            <li><strong>Experience:</strong> Front-end & WordPress development</li>
+            <li><strong>Preferred stack:</strong> HTML, CSS, JS, React, PHP, ACF</li>
+            <li><strong>Open to:</strong> Remote & freelance work</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section container reveal">
+      <h2>Skills</h2>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- skill items populated by script (also used for CV generation) -->
+      </div>
+    </section>
+
+    <section id="projects" class="section container reveal">
+      <h2>Selected Projects</h2>
+      <div id="projectsGrid" class="projects-grid" aria-live="polite">
+        <!-- Projects will be populated by script.js -->
+      </div>
+    </section>
+
+    <section id="contact" class="section container reveal">
+      <h2>Contact</h2>
+      <p class="muted">Send a message or reach out directly — I respond within a few business days.</p>
+
+      <form id="contactForm" class="contact-grid" onsubmit="return handleContact(event)">
+        <input id="name" name="name" placeholder="Your name" required />
+        <input id="email" name="email" type="email" placeholder="Email address" required />
+        <textarea id="message" name="message" placeholder="How can I help?" rows="6" required></textarea>
+        <div class="contact-actions">
+          <button class="btn btn-primary" type="submit" id="sendMsgBtn">Send message</button>
+          <a class="btn btn-ghost" id="downloadFallback" href="assets/Md_Saddam_Hossan_CV.pdf" download>Download PDF (static)</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="social" id="socialLinks">
+        <!-- populated by script -->
+      </div>
+
+      <div class="copyright">
+        <small>© <span id="year"></span> Md Saddam Hossan — Built with care.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- jsPDF + html2canvas (used for client-side PDF export) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-7lqY9xZ9kqN6xZgG4mS79n8w2f6xSgq9x3pGg2xKk2XyqWzVw1mJ7nl6G6x9j4pC3q0kJY1V6R9jJp0bZl3xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNa5l7gS6p1l8+YJw1p4X0W5u7Qw1N4kE0ZlR2K1b3sR6o7dV1sKq5eA6Z7p4tW6hQ2kN8vP1lD6x9mZc3Q8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="custom.js"></script>
 </body>
